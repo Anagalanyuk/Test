@@ -115,6 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Factory.h" />
+    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="IProcessor.h" />
+    <ClInclude Include="ProcessorA.h" />
+    <ClInclude Include="ProcessorB.h" />
+    <ClInclude Include="ProcessorC.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
