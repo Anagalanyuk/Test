@@ -8,18 +8,18 @@
 
 #include"ProcessorC.h"
 
+#include"Factory.h"
+
 int main()
 {
 	FileReader* file = new FileReader();
 	file->Load("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example.txt");
-	Iprocessor* processorA = new ProcessorA(file);
-	processorA->Result();
-	/*Iprocessor* processorC = new ProcessorC(file);
-	processorC->Result();*/
+	//Iprocessor* processorA = new ProcessorA();
+	//Iprocessor* processorB = new ProcessorB();
+    Iprocessor* processorC = new ProcessorC();
 
-	//Iprocessor* processorB = new ProcessorB(file);
-	//processorB->Result();
-	file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processorA);
+	//file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processorC->Result(file->GetFile()));
 
 	system("pause");
+
 }

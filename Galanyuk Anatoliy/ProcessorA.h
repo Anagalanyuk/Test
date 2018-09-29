@@ -9,50 +9,29 @@
 class ProcessorA : public Iprocessor
 {
 private:
-	FileReader* file;
 	std::vector<char> number;
-	char* num = nullptr;
-	int numbers = 0;
-	int result = 0;
 public:
-	ProcessorA(FileReader* file);
-	std::vector<char> GetResult() override;
-	void Result()override;
-	~ProcessorA();
+	std::vector<char>& Result(std::vector<char>& file) override;
 };
 
-ProcessorA::ProcessorA(FileReader*  file)
-{
-	this->file = file;
-}
-
-std::vector<char> ProcessorA::GetResult()
-{
-	char numbers[10];
-	sprintf_s(numbers, "%d", result);
-	number.clear();
-	for (int i = 0; numbers[i] != '\0'; ++i)
-	{
-		number.push_back(numbers[i]);
-	}
-	return number;
-}
-
-void ProcessorA::Result()
+std::vector<char>& ProcessorA::Result(std::vector<char>& file)
 {
 	bool isNumber = false;
-	int index = 0;
-	for (int i = 0; i < file->GetFile().size(); ++i)
+	unsigned int numbers = 0;
+	unsigned int result = 0;
+	char num[10];
+	unsigned int size = file.size();
+	for ( unsigned int i = 0; i < size; ++i)
 	{
-		if (file->GetFile()[i] >= '0' && file->GetFile()[i] <= '9')
+		if (file[i] >= '0' && file[i] <= '9')
 		{
-			number.push_back(file->GetFile()[i]);
+			number.push_back(file[i]);
 			isNumber = true;
 		}
 		else
 		{
-			num = new char[number.size()];
-			for (int i = 0; i < number.size(); ++i)
+			unsigned int size = number.size();
+			for (unsigned int i = 0; i < size; ++i)
 			{
 				num[i] = number[i];
 			}
@@ -66,18 +45,22 @@ void ProcessorA::Result()
 			}
 		}
 	}
+
 	if (isNumber)
 	{
-		for (int i = 0; i < number.size(); ++i)
+		for (unsigned int i = 0; i < number.size(); ++i)
 		{
 			num[i] = number[i];
 		}
 		numbers = atoi(num);
 		result += numbers;
 	}
-}
-
-ProcessorA::~ProcessorA()
-{
-	delete[] num;
+	char temp[10];
+	sprintf_s(temp, "%d", result);
+	number.clear();
+	for (unsigned int i = 0; temp[i] != '\0'; ++i)
+	{
+		number.push_back(temp[i]);
+	}
+	return number;
 }

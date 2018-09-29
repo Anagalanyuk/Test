@@ -7,28 +7,19 @@
 class ProcessorB : public Iprocessor
 {
 private:
-	FileReader* file = nullptr;;
+	
 	std::vector<char> text;
 public:
-	ProcessorB(FileReader* file);
-	std::vector<char> GetResult() override;
-	void Result() override;
+
+	std::vector<char>& Result(std::vector<char>& file) override;
 };
 
-ProcessorB::ProcessorB(FileReader* file)
+std::vector<char>& ProcessorB::Result(std::vector<char>& file)
 {
-	this->file = file;
-}
-
-std::vector<char> ProcessorB::GetResult()
-{
-	return text;
-}
-
-void ProcessorB::Result()
-{
-	for (int i = 0; i < file->GetFile().size(); ++i)
+	int size = file.size();
+	for (int i = 0; i < size; ++i)
 	{
-		text.push_back(file->GetFile()[i]);
+		text.push_back(file[i]);
 	}
+	return text;
 }

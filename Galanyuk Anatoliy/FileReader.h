@@ -8,6 +8,8 @@
 
 #include"IProcessor.h"
 
+#include<memory>
+
 class FileReader
 {
 private:
@@ -15,16 +17,16 @@ private:
 	std::vector<char> symbols;
 public:
 	FileReader();
-	std::vector<char> GetFile();
+	std::vector<char>& GetFile();
 	void Load(const char* const path);
-	void Save(const char* const path, Iprocessor* processor);
+	void Save(const char* const path, std::vector<char>& processor);
 };
 
 FileReader::FileReader()
 {
 }
 
-std::vector<char> FileReader::GetFile()
+std::vector<char>& FileReader::GetFile()
 {
 	return symbols;
 }
@@ -46,14 +48,14 @@ void FileReader::Load(const char* const path)
 	}
 }
 
-void FileReader::Save(const char* const path, Iprocessor* processor)
+void FileReader::Save(const char* const path, std::vector<char>& processor)
 {
 	std::ofstream example_out(path);
 	if (example_out.is_open())
 	{
-		for (int i = 0;  i < processor->GetResult().size(); ++i)
+		for (unsigned int i = 0;  i < processor.size(); ++i)
 		{
-			example_out << processor->GetResult()[i];
+			example_out << processor[i];
 		}
 		example_out.close();
 	}

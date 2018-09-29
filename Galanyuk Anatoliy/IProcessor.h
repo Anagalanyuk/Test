@@ -6,6 +6,5 @@ class Iprocessor
 {
 
 public:
-	virtual void Result() = 0;
-	virtual std::vector<char> GetResult() = 0;
+	virtual std::vector<char>& Result(std::vector<char>& file) = 0;
 };
