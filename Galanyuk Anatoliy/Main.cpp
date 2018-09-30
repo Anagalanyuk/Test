@@ -10,15 +10,27 @@
 
 #include"Factory.h"
 
-int main()
+int main(char symbol)
 {
 	FileReader* file = new FileReader();
 	file->Load("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example.txt");
-	//Iprocessor* processorA = new ProcessorA();
-	//Iprocessor* processorB = new ProcessorB();
-    Iprocessor* processorC = new ProcessorC();
+	std::cout << "Enter argument: ";
+	std::cin >> symbol;
 
-	//file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processorC->Result(file->GetFile()));
+	Factory processor;
+	if (symbol == 'a')
+	{
+		file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processor.CreateProcessorA(file->GetFile()));
+	}
+	else if (symbol == 'b')
+	{
+		file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processor.CreateProcessorB(file->GetFile()));
+
+	}
+	else if (symbol == 'c')
+	{
+		file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processor.CreateProcessorC(file->GetFile()));
+	}
 
 	system("pause");
 

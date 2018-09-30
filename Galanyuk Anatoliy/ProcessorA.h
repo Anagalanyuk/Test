@@ -41,6 +41,10 @@ std::vector<char>& ProcessorA::Result(std::vector<char>& file)
 				result += numbers;
 				numbers = 0;
 				number.clear();
+				for (int i = 0; num[i] != '0'; ++i)
+				{
+					num[i] = ' ';
+				}
 				isNumber = false;
 			}
 		}
