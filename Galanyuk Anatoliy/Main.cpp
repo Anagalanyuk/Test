@@ -20,18 +20,17 @@ int main(char symbol)
 	Factory processor;
 	if (symbol == 'a')
 	{
-		file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processor.CreateProcessorA(file->GetFile()));
+		file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processor.CreateProcessorA()->Result(file->GetFile()));
 	}
 	else if (symbol == 'b')
 	{
-		file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processor.CreateProcessorB(file->GetFile()));
+		file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processor.CreateProcessorB()->Result(file->GetFile()));
 
 	}
 	else if (symbol == 'c')
 	{
-		file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processor.CreateProcessorC(file->GetFile()));
+		file->Save("C:\\Users\\anaga\\Desktop\\Galanyuk Anatoliy\\example_out.txt", processor.CreateProcessorC()->Result(file->GetFile()));
 	}
 
 	system("pause");
-
 }

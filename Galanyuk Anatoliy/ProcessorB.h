@@ -21,5 +21,6 @@ std::vector<char>& ProcessorB::Result(std::vector<char>& file)
 	{
 		text.push_back(file[i]);
 	}
+
 	return text;
 }

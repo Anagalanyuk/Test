@@ -11,8 +11,11 @@ class ProcessorA : public Iprocessor
 private:
 	std::vector<char> number;
 public:
+	ProcessorA();
 	std::vector<char>& Result(std::vector<char>& file) override;
 };
+
+ProcessorA::ProcessorA() {};
 
 std::vector<char>& ProcessorA::Result(std::vector<char>& file)
 {
@@ -59,6 +62,7 @@ std::vector<char>& ProcessorA::Result(std::vector<char>& file)
 		numbers = atoi(num);
 		result += numbers;
 	}
+
 	char temp[10];
 	sprintf_s(temp, "%d", result);
 	number.clear();

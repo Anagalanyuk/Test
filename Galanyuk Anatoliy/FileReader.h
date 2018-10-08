@@ -16,15 +16,10 @@ private:
 	std::ifstream file;
 	std::vector<char> symbols;
 public:
-	FileReader();
 	std::vector<char>& GetFile();
 	void Load(const char* const path);
 	void Save(const char* const path, std::vector<char>& processor);
 };
-
-FileReader::FileReader()
-{
-}
 
 std::vector<char>& FileReader::GetFile()
 {
@@ -33,7 +28,6 @@ std::vector<char>& FileReader::GetFile()
 
 void FileReader::Load(const char* const path)
 {
-
 	std::ifstream file(path);
 	if (file.is_open())
 	{

@@ -15,28 +15,28 @@ private :
 
 public:
 
-    std::vector<char>& CreateProcessorA(std::vector<char>& file);
-	std::vector<char>& CreateProcessorB(std::vector<char>& file);
-	std::vector<char>& CreateProcessorC(std::vector<char>& file);
+    Iprocessor* CreateProcessorA();
+	Iprocessor* CreateProcessorB();
+	Iprocessor* CreateProcessorC();
+	~Factory();
 };
 
-std::vector<char>& Factory::CreateProcessorA( std::vector<char>& file)
+Iprocessor* Factory::CreateProcessorA()
 {
-	processor = new ProcessorA;
-	return processor->Result(file);
-	
+	return new ProcessorA;
 }
 
-std::vector<char>& Factory::CreateProcessorB(std::vector<char>& file)
+Iprocessor* Factory::CreateProcessorB()
 {
-	processor = new ProcessorB;
-	return processor->Result(file);
+	return new ProcessorB;
 }
 
-std::vector<char>& Factory::CreateProcessorC(std::vector<char>& file)
+Iprocessor* Factory::CreateProcessorC()
 {
-	processor = new ProcessorC;
-	return processor->Result(file);
+	return new ProcessorC;
 }
 
-
+Factory::~Factory()
+{
+	delete processor;
+}

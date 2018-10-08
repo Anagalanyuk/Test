@@ -25,6 +25,6 @@ std::vector<char>& ProcessorC::Result(std::vector<char>& file)
 			numbers.push_back(file[i]);
 		}
 	}
+
 	return numbers;
 }
-
